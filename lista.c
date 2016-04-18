@@ -1,6 +1,4 @@
-#include "lista.h"
-#include <stdio.h>
-#include <stdlib.h>
+#include "lista.h" #include <stdio.h> #include <stdlib.h>
 
  struct lista {
     Cliente *cliente;
