@@ -32,6 +32,6 @@
 *.dSYM/
 
 #pastas
-build/
-dist/
-nbproject/
+build/*
+dist/*
+nbproject/*
