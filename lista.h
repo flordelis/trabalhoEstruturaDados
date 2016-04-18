@@ -14,7 +14,7 @@ extern "C" {
 #include "cliente.h"
 typedef struct lista Lista;
 
-int inserirLista (Lista **inicio, Cliente **cliente);
+void inserirLista (Lista **inicio, Cliente **cliente);
 int removerLista (Lista **inicio, int matricula);
 Cliente* buscarLista (Lista *inicio, int matricula);
 #ifdef	__cplusplus

@@ -12,6 +12,7 @@ void inserirLista (Lista **inicio, Cliente **cliente) {
     novo = malloc(sizeof(Lista));
     if(!novo) {
 	  printf("Não foi possivel realizar a operaçao");
+	  return;
 	}
     novo->cliente = *cliente;
     novo->prox = NULL;
@@ -29,10 +30,9 @@ void inserirLista (Lista **inicio, Cliente **cliente) {
 }
 
 int removerLista (Lista **inicio, int matricula) {
-    Lista * anterior; 
+    Lista * anterior = NULL;
     Lista * atual =  *inicio;
-    anterior = NULL;
-    
+     
     while (atual != NULL) {
           if (atual->cliente->matricula == matricula) {
              if (anterior == NULL) {
