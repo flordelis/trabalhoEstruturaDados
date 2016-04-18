@@ -36,4 +36,4 @@ build/*
 dist/*
 nbproject/*
 
-.dep.inc
+*.inc
