@@ -211,7 +211,7 @@ void buscar(Arvore *raiz, Lista *inicio, int tipo){
 
 int pedirMatricula() {
     int matricula;
-    printf("Informe a matricula para remover o cadastro do cliente:") ;
+    printf("Informe a matricula do cliente:") ;
     printf("\nMatricula: ");
     scanf("%d", &matricula);
     return matricula;
