@@ -7,36 +7,34 @@
     struct lista *prox;
 };
 
-int inserirLista (Lista **inicio, Cliente **cliente) {
+void inserirLista (Lista **inicio, Cliente **cliente) {
     Lista *novo; 
-    Lista *aux;
-    Lista *ant;
+    Lista *ant = NULL;
     Lista *busca = *inicio;
-    novo= malloc(sizeof(Lista));
+    novo = malloc(sizeof(Lista));
+    if(!novo) {
+	  printf("Não foi possivel realizar a operaçao");
+	}
     novo->cliente = *cliente;
-    if(*inicio == NULL) {
-        novo->prox = *inicio;
-        *inicio = novo;
-    } else {
-       while  (busca !=NULL) {
-          if (busca->cliente->matricula > novo->cliente->matricula) {
-             break;
-          }
-          ant = busca;
-          busca = busca->prox;
-       }
-       aux = ant->prox;
-       ant->prox = novo;
-       novo->prox = aux;
+    novo->prox = NULL;
+    while  (busca !=NULL  && (busca->cliente->matricula < novo->cliente->matricula)) {
+          	ant = busca;
+          	busca = busca->prox;
     }
-    free(aux);
+    if(ant == NULL) {
+	    novo->prox = *inicio;
+        *inicio = novo;
+	} else {
+       novo->prox = ant->prox;
+       ant->prox = novo;       
+	}
 }
 
 int removerLista (Lista **inicio, int matricula) {
     Lista * anterior; 
-    Lista * atual; 
+    Lista * atual =  *inicio;
     anterior = NULL;
-    atual=*inicio;
+    
     while (atual != NULL) {
           if (atual->cliente->matricula == matricula) {
              if (anterior == NULL) {
@@ -46,11 +44,13 @@ int removerLista (Lista **inicio, int matricula) {
                   anterior->prox = atual->prox;
                   }
              free(atual);
+             return 1;
              break;
              }
           anterior=atual;
           atual=atual->prox;
     }
+    return 0;
 }
 
 Cliente* buscarLista (Lista *inicio, int matricula) {
